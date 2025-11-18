@@ -5,8 +5,8 @@ const cors = require('cors');
 const chalk = require('chalk');
 const authRouter = require('./routes/auth.routes');
 const public10Words = require('./routes/public10words.routes');
-const level_1Router = require('./routes/level.routes')
-const level1get30Router = require('./routes/level1get30.routes')
+const level_1Router = require('./routes/level.routes');
+const level1get30Router = require('./routes/level1get30.routes');
 //APP
 const app = express();
 app.use(cors());
@@ -14,14 +14,17 @@ app.use(express.json());
 //AuthRouter
 app.use('/auth', authRouter);
 app.use('/publicwords', public10Words);
-app.use('/level',level_1Router)
-app.use('/play_level_1',level1get30Router)
+app.use('/level', level_1Router);
+app.use('/play_level_1', level1get30Router);
 //not existing route
 app.use((req, res) => {
   console.log(chalk.yellow(`⚠️  Unknown route accessed: ${req.originalUrl}`));
   res.status(404).json({message: `Route ${req.originalUrl} not found.`});
 });
-
+//Try server
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
 //MONGO
 mongoose
   .connect(process.env.MONGO_URL)
