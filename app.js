@@ -16,15 +16,16 @@ app.use('/auth', authRouter);
 app.use('/publicwords', public10Words);
 app.use('/level', level_1Router);
 app.use('/play_level_1', level1get30Router);
+//Try server
+app.get('/', (req, res) => {
+  res.json({message: 'server is running'});
+});
 //not existing route
 app.use((req, res) => {
   console.log(chalk.yellow(`⚠️  Unknown route accessed: ${req.originalUrl}`));
   res.status(404).json({message: `Route ${req.originalUrl} not found.`});
 });
-//Try server
-app.get('/', (req, res) => {
-  res.json({message: 'server is running'});
-});
+
 //MONGO
 mongoose
   .connect(process.env.MONGO_URL)
