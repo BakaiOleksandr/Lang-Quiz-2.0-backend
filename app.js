@@ -23,7 +23,7 @@ app.use((req, res) => {
 });
 //Try server
 app.get('/', (req, res) => {
-  res.send('Backend is running!');
+  res.json({message: 'server is running'});
 });
 //MONGO
 mongoose
