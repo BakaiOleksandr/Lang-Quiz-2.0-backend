@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const Level_1 = require('../models/Level_1');
 const chalk = require('chalk');
 const isAuth = require('../jwt.middleware/jwt.middleware');
 const router = express.Router();
@@ -63,6 +64,17 @@ router.post('/login', async (req, res, next) => {
       res.status(401).json({message: 'Unable to authenticate the user'});
       return;
     }
+    //Create Level 1
+
+    let level = await Level_1.findOne({user: existingUser._id});
+
+    if (!level) {
+      level = await Level_1.create({user: existingUser._id});
+      console.log(
+        chalk.yellow(`Level_1 created for user ${existingUser.name}`)
+      );
+    }
+    //..............
     const {_id, name} = existingUser;
     const payload = {_id, email, name};
     const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
@@ -80,16 +92,6 @@ router.post('/login', async (req, res, next) => {
 router.get('/verify', isAuth, async (req, res, next) => {
   // console.log(`req.payload`, req.payload);
   res.status(200).json(req.payload);
-});
-//GET profile
-router.get('/profile', isAuth, async (req, res) => {
-  try {
-    const {_id, email, name} = req.payload;
-
-    res.status(200).json({_id, email, name});
-  } catch (err) {
-    return res.status(500).json({message: err.message});
-  }
 });
 
 //EXPORT MODULE

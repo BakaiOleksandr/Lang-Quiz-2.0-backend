@@ -7,6 +7,7 @@ const authRouter = require('./routes/auth.routes');
 const public10Words = require('./routes/public10words.routes');
 const level_1Router = require('./routes/level.routes');
 const level1get30Router = require('./routes/level1get30.routes');
+const levelRoutes = require('./routes/level.routes');
 //APP
 const app = express();
 app.use(cors());
@@ -14,8 +15,10 @@ app.use(express.json());
 //AuthRouter
 app.use('/auth', authRouter);
 app.use('/publicwords', public10Words);
-app.use('/level', level_1Router);
 app.use('/play_level_1', level1get30Router);
+//
+app.use('/game', levelRoutes);
+
 //Try server
 app.get('/', (req, res) => {
   res.json({message: 'server is running'});
