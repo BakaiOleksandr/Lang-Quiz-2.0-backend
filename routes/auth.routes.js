@@ -91,7 +91,11 @@ router.post('/login', async (req, res, next) => {
 //GET
 router.get('/verify', isAuth, async (req, res, next) => {
   // console.log(`req.payload`, req.payload);
-  res.status(200).json(req.payload);
+  try {
+    res.status(200).json(req.payload);
+  } catch (err) {
+    console.log('Error', err);
+  }
 });
 
 //EXPORT MODULE
