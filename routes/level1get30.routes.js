@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
       // //match first words in engl and nnl
       // {$match: {en: {$exists: true}, nl: {$exists: true}}},
       //randomly select spesified number of documents
-      {$sample: {size: 2}},
+      {$sample: {size: 3}},
     ]);
     res.status(200).json(level_1);
   } catch (err) {

@@ -5,7 +5,6 @@ const cors = require('cors');
 const chalk = require('chalk');
 const authRouter = require('./routes/auth.routes');
 const public10Words = require('./routes/public10words.routes');
-const level_1Router = require('./routes/level.routes');
 const level1get30Router = require('./routes/level1get30.routes');
 const levelRoutes = require('./routes/level.routes');
 //APP
@@ -21,7 +20,7 @@ app.use('/game', levelRoutes);
 
 //Try server
 app.get('/', (req, res) => {
-  res.json("Welcome to Language Quiz Game");
+  res.json('Welcome to Language Quiz Game');
 });
 //not existing route
 app.use((req, res) => {
