@@ -21,7 +21,7 @@ app.use('/game', levelRoutes);
 
 //Try server
 app.get('/', (req, res) => {
-  res.json({message: 'server is running'});
+  res.json("Welcome to Language Quiz Game");
 });
 //not existing route
 app.use((req, res) => {
