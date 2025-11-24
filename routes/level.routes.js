@@ -59,6 +59,26 @@ router.post('/level1/mistakes', isAuth, async (req, res) => {
     res.status(400).json({message: err.message});
   }
 });
+//TOTAL_SCORE POST
+router.post('/level1/totalscore',isAuth, async (req, res) => {
+  try {
+     const userId = req.payload._id;
+    const { total_score } = req.body;
+
+    const level = await Level_1.findOneAndUpdate(
+      {user: userId},
+      {
+       total_score
+      },
+      {new: true}
+    );
+    if (!level) {
+      return res.status(404).json({message: 'Document hasnt found '});
+    }
+  } catch (err) {
+    res.status(400).json({message: err.message});
+  }
+});
 
 //EXPORT
 module.exports = router;
