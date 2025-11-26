@@ -5,7 +5,8 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.19.2"
+    "mongoose": "^8.19.2",
+    "nodemailer": "^7.0.11"
   },
   "name": "back",
   "version": "1.0.0",
