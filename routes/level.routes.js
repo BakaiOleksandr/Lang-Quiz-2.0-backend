@@ -13,7 +13,7 @@ router.get('/level1/update', isAuth, async (req, res) => {
       return res.status(404).json({message: 'Level not found'});
     }
 
-    res.json(level);
+     res.status(200).json(level);
   } catch (err) {
     console.error(err);
     res.status(500).json({message: 'Server error'});
@@ -75,6 +75,7 @@ router.post('/level1/totalscore',isAuth, async (req, res) => {
     if (!level) {
       return res.status(404).json({message: 'Document hasnt found '});
     }
+     res.status(200).json(level);
   } catch (err) {
     res.status(400).json({message: err.message});
   }
@@ -95,6 +96,7 @@ router.post('/level1/averagescore',isAuth, async (req, res) => {
     if (!level) {
       return res.status(404).json({message: 'Document hasnt found '});
     }
+     res.status(200).json(level);
   } catch (err) {
     res.status(400).json({message: err.message});
   }

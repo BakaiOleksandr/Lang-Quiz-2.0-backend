@@ -7,7 +7,6 @@ const authRouter = require('./routes/auth.routes');
 const public10Words = require('./routes/public10words.routes');
 const level1get30Router = require('./routes/level1get30.routes');
 const levelRoutes = require('./routes/level.routes');
-const emailAuthRouter = require('./routes/auth.mail.routes');
 //APP
 const app = express();
 app.use(cors());
@@ -16,7 +15,6 @@ app.use(express.json());
 app.use('/auth', authRouter);
 app.use('/publicwords', public10Words);
 app.use('/play_level_1', level1get30Router);
-app.use('/emailauth',emailAuthRouter)
 //
 app.use('/game', levelRoutes);
 
