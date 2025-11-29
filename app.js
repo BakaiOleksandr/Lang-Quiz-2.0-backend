@@ -54,6 +54,5 @@ mongoose
 
 app.listen(5000, () => {
   const listenPort = chalk.green('Server is running on port:5000');
-  console.log(process.env.MONGO_URL);
   console.log(listenPort);
 });
